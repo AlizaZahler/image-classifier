@@ -22,15 +22,6 @@ test/
   3d/    # 99 images
   live/  # 60 images
 ```
-
-These are hard links to the corresponding source images, so the split folders add negligible image storage. Editing the contents of a linked file also edits its source; treat image files as immutable and save transformed images separately. Excluded candidates are absent from these folders. The `images/` collection retains downloaded sources and excluded candidates, so use `train/` and `test/` for folder-based training rather than scanning all of `images/`.
-
-`metadata.csv` and `splits/train.csv` / `splits/test.csv` contain source paths, labels and split assignments. `splits/train.txt` / `splits/test.txt` provide path lists. `class_to_idx.json` fixes the mapping 2d=0, 3d=1, live=2.
-
-Open `review/train.html` or `review/test.html` to browse each split, `review/index.html` for the full active collection, and `review/new_additions.html` for the color/stylized expansion. Labels follow production method: hand-drawn 2d, 3D-model-rendered 3d even when it looks drawn, and physical camera capture live. Source labels and thumbnail screening remain provisional; original photos still require individual provenance/attribution review.
-
-Review decisions are in `review/label_overrides.csv`, with rejected samples in `review/excluded.csv`. After changes run `python scripts/finalize_pilot.py` to audit and regenerate the current 80/20 split. To resplit only the active manifest, use `python scripts/split_train_test.py`. Changes to samples/review decisions can change membership; freeze a version before a training run.
-
 ## PyTorch
 
 Install `scripts/requirements.txt` and install PyTorch separately for your hardware. Use `scripts/pytorch_dataset.py` with split `train` or `test`. Its default approved_only=True filters to individually approved samples; explicitly use approved_only=False for this source-labeled research dataset. The CSV loader composites PNG transparency onto white consistently with the gallery. Folder-based ImageFolder is also possible using the ready-to-use directories; ensure equivalent alpha handling in preprocessing.
