@@ -2,17 +2,6 @@
 
 This implementation uses pretrained TorchVision ConvNeXt Tiny to classify production style as **2d**, **3d**, or **live**. The source-based labels include provisional labels; model quality depends on their accuracy. No accuracy target is assumed.
 
-## Run on this Mac
-
-The local `.venv` is installed. From Terminal:
-
-```bash
-cd "/Users/alizazahler/Images Dataset"
-source .venv/bin/activate
-python train.py --verify-only
-python train.py --tune --evaluate
-```
-
 The final command runs the complete experiment and can take a substantial time on an M2 Air. It prints progress after each epoch. It first validates the data, tunes using training data only, refits on all training images, and only then evaluates the test set. Omit `--evaluate` to run evaluation separately:
 
 ```bash
@@ -77,14 +66,8 @@ python -m pytest -q
 python smoke_test.py
 ```
 
-Tests cover uneven accumulation, decreasing finite toy loss, group integrity, metric counts, RNG/optimizer/scheduler restoration, complete tuning/refit orchestration, simulated OOM recovery and an interrupted-versus-uninterrupted run. The real smoke test decodes all active dataset images, trains the pretrained ConvNeXt classifier briefly on three **fitting** images on CPU and MPS when available, verifies frozen parameters, prediction reload equivalence, and full-network forward/backward. It saves explicitly marked smoke checkpoints, not usable final models. It never computes test metrics.
-
-Full 274-image test evaluation and reproducibility of the final trained model require completing a real training run. The automated 274-item evaluation test uses synthetic known labels to check counting and deterministic batching.
-
 ## Official references
 
 - [ConvNeXt Tiny and weight preprocessing](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.convnext_tiny.html)
 - [Transfer learning](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial)
-- [AMP and gradient accumulation](https://docs.pytorch.org/docs/stable/notes/amp_examples.html)
-
-The dataset's existing licensing and provenance documents still govern its images. Installing training code does not change redistribution rights.
+- [AMP and gradient accumulation](https://docs.pytorch.org/docs/stable/notes/amp_examples.html).
