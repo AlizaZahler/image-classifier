@@ -28,7 +28,7 @@ def main():
     a = p.parse_args()
     paths = sorted(p for p in a.input.rglob('*') if p.suffix.lower() in {'.png', '.jpg', '.jpeg', '.webp', '.bmp', '.tif', '.tiff'}) if a.input.is_dir() else [a.input]
     if not paths:
-        p.error('Input folder contains no supported images')
+        p.error('Image not supported')
     device = resolve_device(a.device)
     model, _ = load_model(a.checkpoint, device)
     results = predict(model, paths, device)
