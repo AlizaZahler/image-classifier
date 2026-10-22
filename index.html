@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Machine Learning Model</title>
+<style>
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:#fff;color:#171717;font-family:Arial,Helvetica,sans-serif}main{max-width:1120px;margin:auto;padding:58px 42px 40px}h1{font-size:clamp(27px,4vw,48px);font-weight:400;text-align:center;margin:0;letter-spacing:-1.3px}.workspace{display:grid;grid-template-columns:1fr 1.2fr;gap:100px;align-items:center;margin:110px 20px 80px;min-height:300px}.upload{width:100%;min-height:300px;border:2px solid transparent;border-radius:16px;background:#fff;color:inherit;cursor:pointer;padding:20px;font:inherit;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:25px}.upload:hover,.upload.drag{background:#fafafa;border-color:#ddd}.upload:focus-visible{outline:3px solid #555;outline-offset:5px}.upload:disabled{cursor:wait}.upload svg{width:145px;height:145px}.upload span{font-size:30px;line-height:1.3}.upload img{max-width:100%;height:205px;object-fit:contain;border-radius:5px}.upload img[hidden]{display:none}input{display:none}.scores{display:grid;gap:38px}.score{display:flex;align-items:center;justify-content:space-between;gap:24px;font-size:clamp(25px,3.3vw,40px);font-weight:400}.score output{font-variant-numeric:tabular-nums;white-space:nowrap}.score.winner{font-weight:700}.result{margin:0 0 27px;font-size:17px;min-height:24px;color:#555}.progress{height:28px;border:3px solid #222;border-radius:100px;padding:4px;overflow:hidden;margin:0 70px}.fill{height:100%;width:0;background:#222;border-radius:100px;transition:width .35s}.busy .fill{width:35%;animation:loading 1.4s ease-in-out infinite}.complete .fill{width:100%}@keyframes loading{0%{transform:translateX(-110%)}100%{transform:translateX(300%)}}.status{text-align:center;font-size:15px;color:#555;min-height:22px;margin:18px 0 8px}.note{text-align:center;font-size:13px;line-height:1.6;color:#777;margin:0}.error{color:#a32424}@media(prefers-reduced-motion:reduce){.busy .fill{animation:none;width:50%}.fill{transition:none}}@media(max-width:700px){main{padding:36px 24px}.workspace{grid-template-columns:1fr;gap:30px;margin:35px 0}.upload{min-height:210px}.upload svg{width:95px;height:95px}.upload span{font-size:24px}.scores{gap:24px}.result{text-align:center}.progress{margin:0;height:24px}h1{letter-spacing:-.7px}}
+</style>
+<script src="/app.js" defer></script>
+</head>
+<body><main>
+<h1>Image Machine Learning Model</h1>
+<section class="workspace" aria-label="Image classifier">
+<div><input id="file" type="file" accept="image/png,image/jpeg,image/webp,image/bmp,image/tiff">
+<button class="upload" id="upload" type="button" aria-label="Upload an image">
+<svg id="icon" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 80V15M36 39L60 15L84 39M18 80V99Q18 105 24 105H96Q102 105 102 99V80"/></svg>
+<img id="preview" alt="Uploaded image preview" hidden>
+<span id="upload-label">Upload an<br>image</span>
+</button></div>
+<div><p class="result" id="result" aria-live="polite">Choose an image to get started.</p>
+<div class="scores">
+<div class="score" data-class="2d"><span>2D Image</span><output id="score-2d">—</output></div>
+<div class="score" data-class="3d"><span>3D Image</span><output id="score-3d">—</output></div>
+<div class="score" data-class="live"><span>Live</span><output id="score-live">—</output></div>
+</div></div>
+</section>
+<div id="progress" class="progress" role="progressbar" aria-label="Image analysis" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill"></div></div>
+<p id="status" class="status" role="status">Click to upload, or drag an image onto the upload area.</p>
+<p class="note">Processed locally on your Mac. Images aren’t saved.<br>Percentages are uncalibrated model scores.</p>
+</main></body></html>
