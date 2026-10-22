@@ -1,2 +1,3 @@
 # image-classifier
 A simple ConvNeXt Tiny model programmed in pyTorch that identifies whether an image is 2D artwork, 3D-rendered, or a real-life photograph. It includes a web interface for uploading images and viewing model predictions.  The project includes training, evaluation, and prediction tools. It achieved 99.64% accuracy on a 274-image test set.
+The next step is to find a larger dataset in which a wider variety of 2d, 3d, and live images are shown so the model can be trained to detect the nuances between them. Eventually, I hope it'll be able to distinguish between AI-generated images and real life images on the basis that AI images are usually more closely related to 3d-rendered images in terms of the smoothness (at least to this human). 
