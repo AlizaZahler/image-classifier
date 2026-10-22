@@ -7,7 +7,7 @@ source .venv/bin/activate
 python serve.py
 ```
 
-Open http://localhost:8000. Click the upload icon or drag in an image. The page shows the predicted class and all three model scores as percentages. The bar indicates analysis activity, not confidence.
+Open http://localhost:8000. Click the upload icon or drag in an image. The page shows the predicted class and all three model scores as percentages.
 
 Uses `runs/20261021-204523/final.pt` by default. To select another model or port:
 
