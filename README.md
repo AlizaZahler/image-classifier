@@ -8,8 +8,6 @@
 | **Total** | **1095** | **274** | **1369** |
 
 
-Training is 79.985% and testing is 20.015%; integer rounding accounts for the small difference from 80/20. There is no active validation split.
-
 ## Ready-to-use folders
 
 ```
@@ -22,9 +20,11 @@ test/
   3d/    # 99 images
   live/  # 60 images
 ```
-## PyTorch
+## Improvements
+-find a better dataset with a larger range of 2D, 3D, and live images. 
+-improve model architecture
 
-Install `scripts/requirements.txt` and install PyTorch separately for your hardware. Use `scripts/pytorch_dataset.py` with split `train` or `test`. Its default approved_only=True filters to individually approved samples; explicitly use approved_only=False for this source-labeled research dataset. The CSV loader composites PNG transparency onto white consistently with the gallery. Folder-based ImageFolder is also possible using the ready-to-use directories; ensure equivalent alpha handling in preprocessing.
+Final goal is to see how the model reacts to AI-generated images and hopefully train it to detect the difference between hyper-realistic generated images and pictures taken on a camera. 
 
 ## Sources
 
